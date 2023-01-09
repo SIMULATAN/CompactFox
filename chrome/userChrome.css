@@ -1,4 +1,4 @@
-/* 
+/*
 ┌─┐┬┌┬┐┌─┐┬  ┌─┐
 └─┐││││├─┘│  ├┤ 
 └─┘┴┴ ┴┴  ┴─┘└─┘
@@ -11,16 +11,15 @@ by Miguel Avila
 */
 
 /*
- 
+
 ┌─┐┌─┐┌┐┌┌─┐┬┌─┐┬ ┬┬─┐┌─┐┌┬┐┬┌─┐┌┐┌
 │  │ ││││├┤ ││ ┬│ │├┬┘├─┤ │ ││ ││││
 └─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘
-
 */
 
 :root {
-  --sfwindow: #19171a;
-  --sfsecondary: #201e21;
+  --sfwindow: #282a36;
+  --sfsecondary: #44475a;
 }
 
 /* Urlbar View */
@@ -30,19 +29,21 @@ by Miguel Avila
 /* want to show the URL Bar    */
 /*─────────────────────────────*/
 
+/*
 .urlbarView {
   display: none !important;
 }
+*/
 
 /*─────────────────────────────*/
 
-/* 
+/*
 ┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
 │  │ ││  │ │├┬┘└─┐
-└─┘└─┘┴─┘└─┘┴└─└─┘ 
+└─┘└─┘┴─┘└─┘┴└─└─┘
 */
 
-/* Tabs `s  */
+/* Tabs  */
 #tabbrowser-tabs:not([movingtab])
   > #tabbrowser-arrowscrollbox
   > .tabbrowser-tab
@@ -76,7 +77,7 @@ by Miguel Avila
   background-color: var(--sfwindow) !important;
 }
 
-/* 
+/*
 
 ┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐            
  ││├┤ │  ├┤  │ ├┤             
@@ -90,7 +91,7 @@ by Miguel Avila
 #page-action-buttons {
   display: none;
 }
- 
+
 
 /* Tabs elements  */
 .tab-close-button {
@@ -187,12 +188,13 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 /* Toolbar  */
 #tracking-protection-icon-container,
 #urlbar-zoom-button,
-#star-button-box,
+/*#star-button-box,*/
 #pageActionButton,
 #pageActionSeparator,
 #tabs-newtab-button,
 #back-button,
-#PanelUI-button,
+/*#PanelUI-button,*/,
+#pageActionButton,
 #forward-button,
 .tab-secondary-label {
   display: none !important;
@@ -203,10 +205,10 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 }
 
 /* Disable elements  */
-#context-navigation,
+/*#context-navigation,*/
 #context-savepage,
 #context-pocket,
-#context-sendpagetodevice,
+/*#context-sendpagetodevice,*/
 #context-selectall,
 #context-viewsource,
 #context-inspect-a11y,
@@ -222,15 +224,14 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
   display: none !important;
 }
 
-#context_bookmarkTab,
+/*#context_bookmarkTab,*/
 #context_moveTabOptions,
-#context_sendTabToDevice,
+/*#context_sendTabToDevice,*/
 #context_reopenInContainer,
-#context_selectAllTabs,
+/*#context_selectAllTabs,*/
 #context_closeTabOptions {
   display: none !important;
 }
-
 
 
 /*
@@ -283,7 +284,7 @@ If this looks weird, comment out the window buttons section.
 #reload-button {
   /* list-style-image: url("chrome://global/skin/icons/reload.svg"); */
   /* list-style-image: url(")"); */
-  list-style-image: url(./refresh-ccw.svg) !important; 
+  list-style-image: url(./refresh-ccw.svg) !important;
   fill: white !important;
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(190deg) brightness(104%) contrast(102%);
 }
