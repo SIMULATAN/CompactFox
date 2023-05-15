@@ -20,6 +20,13 @@ by Miguel Avila
 :root {
   --sfwindow: #282a36;
   --sfsecondary: #44475a;
+  --tab-min-height: 15px!important;
+  --urlbar-min-height: 10px!important;
+  --toolbarbutton-inner-padding: 4px!important;
+  --ROOT-urlbar-height: 30px;
+  --urlbar-height: var(--ROOT-urlbar-height) !important;
+  --urlbar-container-height: var(--urlbar-height) !important;
+  --urlbar-toolbar-height: var(--urlbar-height) !important;
 }
 
 /* Urlbar View */
@@ -34,6 +41,10 @@ by Miguel Avila
   display: none !important;
 }
 */
+
+hbox#urlbar {
+  --urlbar-height: var(--ROOT-urlbar-height) !important;
+}
 
 /*─────────────────────────────*/
 
@@ -56,6 +67,10 @@ by Miguel Avila
   > .tab-background[selected='true'] {
   background-image: none !important;
   background-color: var(--toolbar-bgcolor) !important;
+}
+
+#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+  height: 2em !important;
 }
 
 /* Inactive tabs color */
@@ -142,7 +157,6 @@ by Miguel Avila
 
 .tab-background {
   border-right: 0px solid rgba(0, 0, 0, 0) !important;
-  margin-left: -4px !important;
 }
 
 .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
@@ -157,6 +171,29 @@ by Miguel Avila
 
 #tabs-newtab-button {
   padding-left: 0 !important;
+}
+
+.tabbrowser-tab {
+  --tab-label-mask-size: 1em !important;
+  /* remove space between tabs */
+  padding: 0 !important;
+}
+
+.tab-content[pinned] {
+  /* make pinned tabs rectangular */
+  padding: 0 7px;
+}
+
+/* leave some more space for tab text */
+.tab-content:not([pinned="true"]) {
+  padding-right: calc(var(--inline-tab-padding) / 4) !important;
+}
+
+.tab-close-button {
+  margin-inline-end: calc(var(--inline-tab-padding) / 2) !important;
+  width: 20px !important;
+  height: 20px !important;
+  padding: 2px !important;
 }
 
 /* Url Bar  */
@@ -198,6 +235,12 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 #forward-button,
 .tab-secondary-label {
   display: none !important;
+}
+
+/* Notification Icon in URL Bar */
+#notification-popup-box {
+  /* The icon uses some weird calculations, instead, we can just make it be full height of the parent which has the right one */
+  height: 100% !important;
 }
 
 .urlbarView-url {
@@ -320,4 +363,45 @@ If this looks weird, comment out the window buttons section.
   list-style-image: url(./toggle-left.svg) !important;
   fill: white !important;
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(190deg) brightness(104%) contrast(102%) !important;
+}
+
+
+/* URL Bar */
+#urlbar-background, #searchbar {
+  border: none !important;
+}
+
+/* horizontal line */
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+  border-top: none !important;
+}
+
+/* "This time, search with" */
+.search-panel-one-offs-header {
+  display: none !important;
+}
+
+/* background of urlbar */
+#urlbar:is([focused="true"], [open]) > #urlbar-background, #searchbar:focus-within {
+  background-color: var(--sfsecondary) !important;
+}
+
+/* background of highlighted urlbar elements */
+.urlbarView [aria-selected=true] .urlbarView-row-inner {
+  background-color: var(--sfwindow) !important;
+}
+
+/* horizontal line over the search engine icons */
+.urlbarView:not([noresults]) > .search-one-offs:not([hidden]) {
+  border-top: none;
+}
+
+/* top padding of the search engine icons */
+#urlbar .search-one-offs:not([hidden]) {
+  padding-top: 0;
+}
+
+/* disable "Firefox Suggest" text | better selector needed, please PR if you have one */
+.urlbarView-row[label="Firefox Suggest"] {
+  display: none!important;
 }
