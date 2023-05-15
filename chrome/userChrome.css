@@ -179,9 +179,9 @@ hbox#urlbar {
   padding: 0 !important;
 }
 
-.tab-content[pinned] {
+.tab-content[pinned], #firefox-view-button {
   /* make pinned tabs rectangular */
-  padding: 0 7px;
+  padding: 0 10px !important;
 }
 
 /* leave some more space for tab text */
@@ -189,11 +189,52 @@ hbox#urlbar {
   padding-right: calc(var(--inline-tab-padding) / 4) !important;
 }
 
+/* fix position of tab close button */
 .tab-close-button {
   margin-inline-end: calc(var(--inline-tab-padding) / 2) !important;
   width: 20px !important;
   height: 20px !important;
   padding: 2px !important;
+}
+
+/* fix padding of firefox view button */
+:root:not([privatebrowsingmode=temporary], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+:root[privatebrowsingmode=temporary]:not([firefoxviewhidden]) :is(
+  toolbarbutton:not(#firefox-view-button),
+  toolbarpaletteitem:not(#wrapper-firefox-view-button)
+) + #tabbrowser-tabs {
+  margin-inline-start: 0 !important;
+}
+
+/* fix background color of view button on hover */
+#TabsToolbar #firefox-view-button:hover:not([open]) {
+  background-color: color-mix(in srgb, currentColor 11%, transparent);
+}
+
+/* remove background color of image because that's already handled by the rule above */
+#TabsToolbar #firefox-view-button:hover:not([open]) > .toolbarbutton-icon {
+  background-color: transparent !important;
+}
+
+/* remove background of icon, to be set again on another element below */
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon:-moz-lwtheme {
+  background-image: none !important;
+}
+
+/* change background of whole area to the one that was previously only set to the background of the icon */
+#TabsToolbar #firefox-view-button[open] {
+  background-image: linear-gradient(var(--lwt-selected-tab-background-color, transparent), var(--lwt-selected-tab-background-color, transparent)), linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), var(--lwt-header-image, none) !important;
+}
+
+/* remove weird outline of firefox view icon */
+#TabsToolbar #firefox-view-button[open]:not(:focus-visible) > .toolbarbutton-icon:-moz-lwtheme,
+.tab-background[selected]:not([multiselected=true]):-moz-lwtheme {
+  outline: none !important;
+}
+
+/* remove weird shadow of firefox view icon */
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon {
+  box-shadow: none !important;
 }
 
 /* Url Bar  */
