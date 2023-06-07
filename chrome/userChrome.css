@@ -23,6 +23,7 @@ by Miguel Avila
   --tab-min-height: 15px!important;
   --urlbar-min-height: 10px!important;
   --toolbarbutton-inner-padding: 4px!important;
+  --urlbar-icon-padding: 2px!important;
   --ROOT-urlbar-height: 30px;
   --urlbar-height: var(--ROOT-urlbar-height) !important;
   --urlbar-container-height: var(--urlbar-height) !important;
@@ -169,10 +170,6 @@ hbox#urlbar {
   padding-inline-end: 0 !important;
 }
 
-#tabs-newtab-button {
-  padding-left: 0 !important;
-}
-
 .tabbrowser-tab {
   --tab-label-mask-size: 1em !important;
   /* remove space between tabs */
@@ -187,6 +184,11 @@ hbox#urlbar {
 /* leave some more space for tab text */
 .tab-content:not([pinned="true"]) {
   padding-right: calc(var(--inline-tab-padding) / 4) !important;
+}
+
+/* fix width of reload button */
+toolbarbutton[id="reload-button"] {
+  padding: 0;
 }
 
 /* fix position of tab close button */
