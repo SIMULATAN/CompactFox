@@ -6,7 +6,7 @@
 ├┤ │ │┌┴┬┘      
 └  └─┘┴ └─
 
-by Miguel Avila
+by Miguel Avila & SIMULATAN
 
 */
 
@@ -28,6 +28,7 @@ by Miguel Avila
   --urlbar-height: var(--ROOT-urlbar-height) !important;
   --urlbar-container-height: var(--urlbar-height) !important;
   --urlbar-toolbar-height: var(--urlbar-height) !important;
+  --inline-tab-padding: 5px !important;
 }
 
 /* Urlbar View */
@@ -45,6 +46,10 @@ by Miguel Avila
 
 hbox#urlbar {
   --urlbar-height: var(--ROOT-urlbar-height) !important;
+}
+
+.tab-text {
+  font-size: 90%;
 }
 
 /*─────────────────────────────*/
@@ -71,7 +76,7 @@ hbox#urlbar {
 }
 
 #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
-  height: 2em !important;
+  height: 1.8em !important;
 }
 
 /* Inactive tabs color */
@@ -178,11 +183,11 @@ hbox#urlbar {
 
 .tab-content[pinned], #firefox-view-button {
   /* make pinned tabs rectangular */
-  padding: 0 10px !important;
+  padding: 0 5px !important;
 }
 
 /* leave some more space for tab text */
-.tab-content:not([pinned="true"]) {
+.tab-content:not([pinned]) {
   padding-right: calc(var(--inline-tab-padding) / 4) !important;
 }
 
@@ -319,6 +324,27 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
   display: none !important;
 }
 
+/* disable margin between the extension icons */
+toolbar .toolbaritem-combined-buttons {
+  margin-inline: 0 !important;
+}
+
+/* style hamburger menu in toolbar */
+#PanelUI-menu-button {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-right: var(--toolbarbutton-inner-padding) !important;
+}
+
+/* make profile and downloads button consistent with other toolbar items */
+#fxa-toolbar-menu-button, #downloads-button {
+  padding: 0 !important;
+}
+
+/* less spacing between pinned / regular tabs */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+  margin-inline-start: 0px !important;
+}
 
 /*
 ┬┌─┐┌─┐┌┐┌┌─┐
@@ -456,4 +482,9 @@ If this looks weird, comment out the window buttons section.
 
 .urlbarView-row[label] {
   margin-block-start: 0 !important;
+}
+
+/* disable alltabs dropdown */
+#alltabs-button {
+  display: none !important;
 }
