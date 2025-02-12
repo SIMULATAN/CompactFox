@@ -29,6 +29,11 @@ by Miguel Avila & SIMULATAN
   --urlbar-container-height: var(--urlbar-height) !important;
   --urlbar-toolbar-height: var(--urlbar-height) !important;
   --inline-tab-padding: 5px !important;
+  /* horizontal line between tabs section and toolbar section */
+  --tabs-navbar-separator-style: none !important;
+  /* border of URL bar */
+  --focus-outline: 0 !important;
+  --focus-outline-inset: 0 !important;
 }
 
 /* Urlbar View */
@@ -87,6 +92,8 @@ hbox#urlbar {
 /* Window colors  */
 :root {
   --toolbar-bgcolor: var(--sfsecondary) !important;
+  --toolbar-field-background-color: var(--toolbar-bgcolor) !important;
+  --toolbar-field-focus-background-color: var(--toolbar-bgcolor) !important;
   --tabs-border-color: var(--sfsecondary) !important;
   --lwt-sidebar-background-color: var(--sfwindow) !important;
   --lwt-toolbar-field-focus: var(--sfsecondary) !important;
@@ -96,6 +103,10 @@ hbox#urlbar {
 #sidebar-box,
 .sidebar-placesTree {
   background-color: var(--sfwindow) !important;
+}
+
+#tabs-newtab-button:hover > image {
+  background-color: color-mix(in srgb, var(--toolbar-bgcolor) 30%, transparent) !important;
 }
 
 /*
@@ -215,7 +226,7 @@ toolbarbutton[id="reload-button"] {
 
 /* fix background color of view button on hover */
 #TabsToolbar #firefox-view-button:hover:not([open]) {
-  background-color: color-mix(in srgb, currentColor 11%, transparent);
+  background-color: var(--tab-hover-background-color) !important;
 }
 
 /* remove background color of image because that's already handled by the rule above */
@@ -254,7 +265,7 @@ toolbarbutton[id="reload-button"] {
   margin-left: 0 !important;
 }
 
-#urlbar[focused='true'] > #urlbar-background {
+#urlbar[focused] > #urlbar-background {
   box-shadow: none !important;
 }
 
@@ -470,13 +481,13 @@ If this looks weird, comment out the window buttons section.
   padding-top: 0;
 }
 
-/* disable "Firefox Suggest" text */
-.urlbarView-row[label="Firefox Suggest"] {
+/* disable "Firefox Suggest" and "Recent Searches" text */
+.urlbarView-row[label] {
   padding-top: 0;
   margin-top: 0;
 }
 
-.urlbarView-row[label="Firefox Suggest"]::before {
+.urlbarView-row[label]::before {
   display: none !important;
 }
 
