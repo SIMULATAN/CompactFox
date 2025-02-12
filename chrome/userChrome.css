@@ -22,9 +22,10 @@ by Miguel Avila & SIMULATAN
   --sfsecondary: #44475a;
   --tab-min-height: 15px!important;
   --urlbar-min-height: 10px!important;
+  --urlbar-container-height: var(--urlbar-min-height) !important;
   --toolbarbutton-inner-padding: 4px!important;
   --urlbar-icon-padding: 2px!important;
-  --ROOT-urlbar-height: 30px;
+  --ROOT-urlbar-height: var(--urlbar-container-height);
   --urlbar-height: var(--ROOT-urlbar-height) !important;
   --urlbar-container-height: var(--urlbar-height) !important;
   --urlbar-toolbar-height: var(--urlbar-height) !important;
@@ -49,8 +50,10 @@ by Miguel Avila & SIMULATAN
 }
 */
 
-hbox#urlbar {
+#urlbar-container, #urlbar {
   --urlbar-height: var(--ROOT-urlbar-height) !important;
+  --urlbar-container-height: var(--urlbar-height) !important;
+  padding: 0;
 }
 
 .tab-text {
@@ -168,6 +171,8 @@ hbox#urlbar {
 
 :root {
   --toolbarbutton-border-radius: 0 !important;
+  /* disable margin between the extension icons */
+  --toolbarbutton-outer-padding: 0 !important;
   --tab-border-radius: 0 !important;
   --tab-block-margin: 0 !important;
 }
